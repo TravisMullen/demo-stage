@@ -12,23 +12,28 @@ template.innerHTML = `
     :host([hidden]) {
       display: none;
     }
-    article {
+    section {
       margin: 2rem;
       padding: 2rem;
       transition: background-color .5s ease-out;
     }
-    article h1 {
+    section h1 {
       text-align: center;
       margin-top: 1rem;
       color: white;
     }
   </style>
-  <article>
+  <section>
     <h1></h1>
-  </article>
+  </section>
 `
 
-export class DemoStage extends HTMLElement {
+const defaults = Object.freeze({
+  headline: 'Stage for state preview.',
+  color: '#444'
+})
+
+class DemoStage extends HTMLElement {
   constructor () {
     super()
 
@@ -41,10 +46,10 @@ export class DemoStage extends HTMLElement {
 
   connectedCallback () {
     if (!this.hasAttribute('headline')) {
-      this.setAttribute('headline', 'Stage for state preview.')
+      this.setAttribute('headline', defaults.headline)
     }
     if (!this.hasAttribute('color')) {
-      this.setAttribute('color', '#444')
+      this.setAttribute('color', defaults.color)
     }
   }
 
@@ -74,7 +79,11 @@ export class DemoStage extends HTMLElement {
   }
 
   set color (newValue) {
-    this.setAttribute('color', newValue)
+    if (newValue) {
+      this.setAttribute('color', newValue)
+    } else {
+      this.setAttribute('color', defaults.color)
+    }
   }
 }
 
