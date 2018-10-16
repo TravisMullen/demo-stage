@@ -17,5 +17,14 @@
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.1.3",
     "http-server": "^0.11.1"
-  }
+  },
+  "keywords": [
+    "esm",
+    "module",
+    "custom-element",
+    "customelement",
+    "htmlelement",
+    "state-change",
+    "es6"
+  ]
 }
