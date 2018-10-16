@@ -1,7 +1,7 @@
 {
   "name": "demo-stage",
   "version": "1.0.0",
-  "description": "Custom Element for testing a state in the as a string and/or color.",
+  "description": "Custom Element for testing state changes as a string and/or color.",
   "main": "index.js",
   "scripts": {
     "serve": "./node_modules/http-server/bin/http-server",
