@@ -2,6 +2,11 @@
 
 const template = document.createElement('template')
 
+const elements = Object.freeze({
+  main: 'section',
+  header: 'h1'
+})
+
 template.innerHTML = `
   <style>
     :host {
@@ -12,20 +17,20 @@ template.innerHTML = `
     :host([hidden]) {
       display: none;
     }
-    section {
+    ${elements.main} {
       margin: 2rem;
       padding: 2rem;
       transition: background-color .5s ease-out;
     }
-    section h1 {
+    ${elements.main} ${elements.header} {
       text-align: center;
       margin-top: 1rem;
       color: white;
     }
   </style>
-  <section>
-    <h1></h1>
-  </section>
+  <${elements.main}>
+    <${elements.header}></${elements.header}>
+  </${elements.main}>
 `
 
 const defaults = Object.freeze({
@@ -40,8 +45,8 @@ class DemoStage extends HTMLElement {
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-    this.displayVal = this.shadowRoot.querySelector('h1')
-    this.styleElement = this.shadowRoot.querySelector('article')
+    this.displayVal = this.shadowRoot.querySelector(elements.header)
+    this.styleElement = this.shadowRoot.querySelector(elements.main)
   }
 
   connectedCallback () {
