@@ -1,6 +1,6 @@
 {
   "name": "demo-stage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Custom Element for testing state changes as a string and/or color.",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
   "homepage": "https://github.com/TravisMullen/demo-stage#readme",
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.1.3",
+    "codemirror": "^5.40.2",
     "http-server": "^0.11.1"
   },
   "files": [
@@ -27,6 +28,10 @@
     "custom-element",
     "customelement",
     "htmlelement",
+    "testing-element",
+    "testingelement",
+    "test-element",
+    "testelement",
     "state-change",
     "es6"
   ]

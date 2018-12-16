@@ -3,7 +3,7 @@
 const template = document.createElement('template')
 
 const elements = Object.freeze({
-  main: 'section',
+  body: 'section',
   header: 'h1'
 })
 
@@ -17,44 +17,49 @@ template.innerHTML = `
     :host([hidden]) {
       display: none;
     }
-    ${elements.main} {
+    ${elements.body} {
       margin: 2rem;
       padding: 2rem;
       transition: background-color .5s ease-out;
     }
-    ${elements.main} ${elements.header} {
+    ${elements.body} ${elements.header} {
       text-align: center;
       margin-top: 1rem;
       color: white;
     }
   </style>
-  <${elements.main}>
+  <${elements.body}>
     <${elements.header}></${elements.header}>
-  </${elements.main}>
+  </${elements.body}>
 `
-
-const defaults = Object.freeze({
-  headline: 'Stage for state preview.',
-  color: '#444'
-})
 
 class DemoStage extends HTMLElement {
   constructor () {
     super()
 
+    Object.defineProperty(this, 'defaults', {
+      value: Object.freeze({
+        headline: 'Default headline text.',
+        color: '#444'
+      }),
+      enumerable: true,
+      writable: false,
+      configurable: false
+    })
+
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
     this.displayVal = this.shadowRoot.querySelector(elements.header)
-    this.styleElement = this.shadowRoot.querySelector(elements.main)
+    this.styleElement = this.shadowRoot.querySelector(elements.body)
   }
 
   connectedCallback () {
     if (!this.hasAttribute('headline')) {
-      this.setAttribute('headline', defaults.headline)
+      this.setAttribute('headline', this.defaults.headline)
     }
     if (!this.hasAttribute('color')) {
-      this.setAttribute('color', defaults.color)
+      this.setAttribute('color', this.defaults.color)
     }
   }
 
@@ -87,11 +92,11 @@ class DemoStage extends HTMLElement {
     if (newValue) {
       this.setAttribute('color', newValue)
     } else {
-      this.setAttribute('color', defaults.color)
+      this.setAttribute('color', this.defaults.color)
     }
   }
 }
 
 window.customElements.define('demo-stage', DemoStage)
 
-export default DemoStage
+export { DemoStage as default }
