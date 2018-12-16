@@ -10,9 +10,7 @@ const elements = Object.freeze({
 template.innerHTML = `
   <style>
     :host {
-      all: initial;
       display: block;
-      contain: content;
     }
     :host([hidden]) {
       display: none;
