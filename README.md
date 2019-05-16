@@ -12,7 +12,8 @@
 
 ## Or run locally.
 
-```shgit clone https://github.com/TravisMullen/demo-stage
+```sh
+git clone https://github.com/TravisMullen/demo-stage
 cd demo-stage
 npm run serve
 ```
