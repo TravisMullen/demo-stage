@@ -10,8 +10,10 @@
   <demo-stage headline="Loaded Data." color="purple"></demo-stage>
 ``` 
 
-See it in action. 
+## Or run locally.
 
+`git clone https://github.com/TravisMullen/demo-stage`
+`cd demo-stage`
 `npm run serve`
 
 
